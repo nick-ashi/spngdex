@@ -14,7 +14,20 @@ public class PokeAPIResponse {
     String weight;
     String height;
 
-    // stat data here
+    /**
+     * Stat data
+     */
+    List<StatSlot> stats;
+    @Data
+    public static class StatSlot {
+        private int base_stat;
+        private Stat stat;
+    }
+    @Data
+    public static class Stat {
+        private String name;
+        private String url;
+    }
 
     /**
      * Ability Data
@@ -23,8 +36,7 @@ public class PokeAPIResponse {
     @Data
     public static class Ability {
         private String name;
-        @JsonProperty("url")
-        private String abilityUrl;
+        private String url;
     }
     @Data
     public static class AbilitySlot {
@@ -39,34 +51,28 @@ public class PokeAPIResponse {
     @Data
     public static class MoveSlot {
         private Move move;
-        @JsonProperty("version_group_details")
-        private List<VersionGroupDetail>  versionGroupDetails;
+        private List<VersionGroupDetail>  version_group_details;
     }
     @Data
     public static class VersionGroupDetail {
         private int level_learned_at;
-        @JsonProperty("move_learn_method")
-        private MoveLearnMethod moveLearnMethod;
-        @JsonProperty("version_group")
-        private VersionGroup versionGroup;
+        private MoveLearnMethod move_learn_method;
+        private VersionGroup version_group;
     }
     @Data
     public static class Move {
         private String name;
-        @JsonProperty("url")
-        private String moveUrl;
+        private String url;
     }
     @Data
     public static class MoveLearnMethod {
         private String name;
-        @JsonProperty("url")
-        private String moveLearnMethodUrl;
+        private String url;
     }
     @Data
     public static class VersionGroup {
         private String name;
-        @JsonProperty("url")
-        private String versionGroupUrl;
+        private String url;
     }
 
     /**
