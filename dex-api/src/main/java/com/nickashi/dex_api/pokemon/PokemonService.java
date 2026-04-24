@@ -10,8 +10,14 @@ public class PokemonService {
 
     private final RestClient restClient = RestClient.builder().baseUrl("https://pokeapi.co/api/v2").build();
 
-    public PokeAPIResponse getByName(String name) {
-        return restClient.get().uri("/pokemon/" + name).accept(MediaType.APPLICATION_JSON).retrieve().body(PokeAPIResponse.class);
+    public PokemonSummary getByName(String name) {
+        PokeAPIResponse res = restClient.get()
+                .uri("/pokemon/" + name)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(PokeAPIResponse.class);
+
+        return new PokemonSummary(res);
     }
 
 
