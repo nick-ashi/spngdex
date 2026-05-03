@@ -43,6 +43,6 @@ public class PokemonSummary {
     private Map<String, Integer> stats = new HashMap<>();
     private List<String> abilities = new ArrayList<>();
     private List<String> moves = new ArrayList<>();
+    private boolean inChampionsFormat;
     private PokeAPIResponse.SpriteList sprites;
-
 }
