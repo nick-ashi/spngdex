@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,7 +14,9 @@ import java.util.List;
 @Service
 public class CompetitiveService {
 
+    @Cacheable("championsList")
     public List<String> getChampionsPokemon() {
+        System.out.println("Fetching current pokemon in champions from Bulbapedia...");
         List<String> res = new ArrayList<>();
         try {
             Document doc = Jsoup.connect("https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_in_Pok%C3%A9mon_Champions")
